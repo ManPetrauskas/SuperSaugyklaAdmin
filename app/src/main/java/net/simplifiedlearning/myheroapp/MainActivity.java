@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                     editTextName.setText(table.getFirst_name());
                     editTextRealname.setText(table.getLast_name());
 //                    ratingBar.setRating(hero.getRating());
-//                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition(hero.getTeamaffiliation()));
+                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition("Avengers"));
                     buttonAddUpdate.setText("Update");
                 }
             });
