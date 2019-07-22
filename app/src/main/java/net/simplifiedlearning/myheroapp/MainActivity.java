@@ -164,7 +164,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void deleteHero(String token) {
-        PerformNetworkRequestDelete request = new PerformNetworkRequestDelete(Api.URL_DELETE_HERO + token, null, CODE_GET_REQUEST);
+        HashMap<String, String> params = new HashMap<>();
+        params.put("login_token", token);
+        PerformNetworkRequestDelete request = new PerformNetworkRequestDelete(Api.URL_DELETE_HERO, params, CODE_POST_REQUEST);
         request.execute();
     }
 
