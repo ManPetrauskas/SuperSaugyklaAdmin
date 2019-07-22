@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity {
         isUpdating = false;
     }
 
-    private void deleteHero(int id) {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_DELETE_HERO + id, null, CODE_GET_REQUEST);
+    private void deleteHero(String token) {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_DELETE_HERO + token, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -268,8 +268,8 @@ public class MainActivity extends AppCompatActivity {
                     editTextHeroId.setText(String.valueOf(table.getId()));
                     editTextName.setText(table.getFirst_name());
                     editTextRealname.setText(table.getLast_name());
-                    ratingBar.setRating(3);
-                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition("Avengers"));
+//                    ratingBar.setRating(3);
+//                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition("Avengers"));
                     buttonAddUpdate.setText("Update");
                 }
             });
@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                             .setMessage("Are you sure you want to delete it?")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    deleteHero(table.getId());
+                                    deleteHero(table.getLogin_token());
                                 }
                             })
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
