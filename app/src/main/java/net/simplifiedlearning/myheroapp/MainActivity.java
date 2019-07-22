@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                     obj.getString("last_time_started"),
                     obj.getString("last_time_ended"),
                     obj.getLong("todays_worktime"),
-                    obj.getBoolean("checkas")
+                    obj.getInt("checkas")
             ));
         }
 

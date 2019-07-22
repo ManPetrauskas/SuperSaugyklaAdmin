@@ -8,9 +8,9 @@ public class TableGeneral {
     String last_time_started;
     String last_time_ended;
     long todays_worktime;
-    boolean checkas;
+    int checkas;
 
-    public TableGeneral(int id, String first_name, String last_name, String login_token, String last_time_started, String last_time_ended, long todays_worktime, boolean checkas) {
+    public TableGeneral(int id, String first_name, String last_name, String login_token, String last_time_started, String last_time_ended, long todays_worktime, int checkas) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -49,7 +49,7 @@ public class TableGeneral {
         return todays_worktime;
     }
 
-    public boolean isCheckas() {
+    public int isCheckas() {
         return checkas;
     }
 }
