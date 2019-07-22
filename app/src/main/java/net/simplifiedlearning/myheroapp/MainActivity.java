@@ -79,30 +79,35 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void createHero() {
-        String name = editTextName.getText().toString().trim();
-        String realname = editTextRealname.getText().toString().trim();
+        String first_name = editTextName.getText().toString().trim();
+        String last_name = editTextRealname.getText().toString().trim();
+        String login_token = editTextRealname.getText().toString().trim();
 
-        int rating = (int) ratingBar.getRating();
 
         String team = spinnerTeam.getSelectedItem().toString();
 
-        if (TextUtils.isEmpty(name)) {
-            editTextName.setError("Please enter name");
+        if (TextUtils.isEmpty(first_name)) {
+            editTextName.setError("Please enter a name");
             editTextName.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(realname)) {
-            editTextRealname.setError("Please enter real name");
+        if (TextUtils.isEmpty(last_name)) {
+            editTextRealname.setError("Please enter a surname");
+            editTextRealname.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(last_name)) {
+            editTextRealname.setError("Please enter a login token");
             editTextRealname.requestFocus();
             return;
         }
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("name", name);
-        params.put("realname", realname);
-        params.put("rating", String.valueOf(rating));
-        params.put("teamaffiliation", team);
+        params.put("first_name", first_name);
+        params.put("last_name", last_name);
+        params.put("login_token", login_token);
 
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_CREATE_HERO, params, CODE_POST_REQUEST);
         request.execute();
