@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     Button buttonAddUpdate;
 
-    List<Hero> heroList;
+//    List<Hero> heroList;
+    List<TableGeneral> tableList;
 
     boolean isUpdating = false;
 
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         listView = (ListView) findViewById(R.id.listViewHeroes);
 
-        heroList = new ArrayList<>();
+//        heroList = new ArrayList<>();
+        tableList = new ArrayList<>();
 
 
         buttonAddUpdate.setOnClickListener(new View.OnClickListener() {
@@ -167,21 +169,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshHeroList(JSONArray heroes) throws JSONException {
-        heroList.clear();
+//        heroList.clear();
+        tableList.clear();
 
         for (int i = 0; i < heroes.length(); i++) {
             JSONObject obj = heroes.getJSONObject(i);
 
-            heroList.add(new Hero(
+            tableList.add(new TableGeneral(
                     obj.getInt("id"),
-                    obj.getString("name"),
-                    obj.getString("realname"),
-                    obj.getInt("rating"),
-                    obj.getString("teamaffiliation")
+                    obj.getString("first_name"),
+                    obj.getString("last_name"),
+                    obj.getString("login_token"),
+                    obj.getString("last_time_started"),
+                    obj.getString("last_time_ended"),
+                    obj.getLong("todays_worktime"),
+                    obj.getBoolean("checkas")
             ));
         }
 
-        HeroAdapter adapter = new HeroAdapter(heroList);
+        HeroAdapter adapter = new HeroAdapter(tableList);
         listView.setAdapter(adapter);
     }
 
@@ -232,12 +238,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class HeroAdapter extends ArrayAdapter<Hero> {
-        List<Hero> heroList;
+    class HeroAdapter extends ArrayAdapter<TableGeneral> {
+        List<TableGeneral> tableList;
 
-        public HeroAdapter(List<Hero> heroList) {
-            super(MainActivity.this, R.layout.layout_hero_list, heroList);
-            this.heroList = heroList;
+        public HeroAdapter(List<TableGeneral> tableList) {
+            super(MainActivity.this, R.layout.layout_hero_list, tableList);
+            this.tableList = tableList;
         }
 
 
@@ -251,19 +257,19 @@ public class MainActivity extends AppCompatActivity {
             TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
             TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
 
-            final Hero hero = heroList.get(position);
+            final TableGeneral table = tableList.get(position);
 
-            textViewName.setText(hero.getName());
+            textViewName.setText(table.getFirst_name());
 
             textViewUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     isUpdating = true;
-                    editTextHeroId.setText(String.valueOf(hero.getId()));
-                    editTextName.setText(hero.getName());
-                    editTextRealname.setText(hero.getRealname());
-                    ratingBar.setRating(hero.getRating());
-                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition(hero.getTeamaffiliation()));
+                    editTextHeroId.setText(String.valueOf(table.getId()));
+                    editTextName.setText(table.getFirst_name());
+                    editTextRealname.setText(table.getLast_name());
+//                    ratingBar.setRating(hero.getRating());
+//                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition(hero.getTeamaffiliation()));
                     buttonAddUpdate.setText("Update");
                 }
             });
@@ -274,11 +280,11 @@ public class MainActivity extends AppCompatActivity {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-                    builder.setTitle("Delete " + hero.getName())
+                    builder.setTitle("Delete " + table.getFirst_name())
                             .setMessage("Are you sure you want to delete it?")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    deleteHero(hero.getId());
+                                    deleteHero(table.getId());
                                 }
                             })
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
