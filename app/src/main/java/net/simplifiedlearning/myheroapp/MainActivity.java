@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void deleteHero(String token) {
-        PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_DELETE_HERO + token, null, CODE_GET_REQUEST);
+        PerformNetworkRequestDelete request = new PerformNetworkRequestDelete(Api.URL_DELETE_HERO + token, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -221,6 +221,44 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            RequestHandler requestHandler = new RequestHandler();
+
+            if (requestCode == CODE_POST_REQUEST)
+                return requestHandler.sendPostRequest(url, params);
+
+
+            if (requestCode == CODE_GET_REQUEST)
+                return requestHandler.sendGetRequest(url);
+
+            return null;
+        }
+    }
+    //================================================================================
+    private class PerformNetworkRequestDelete extends AsyncTask<Void, Void, String> {
+        String url;
+        HashMap<String, String> params;
+        int requestCode;
+
+        PerformNetworkRequestDelete(String url, HashMap<String, String> params, int requestCode) {
+            this.url = url;
+            this.params = params;
+            this.requestCode = requestCode;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            readHeroes();
         }
 
         @Override
