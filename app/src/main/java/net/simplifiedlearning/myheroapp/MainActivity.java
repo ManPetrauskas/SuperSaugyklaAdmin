@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
                     editTextHeroId.setText(String.valueOf(table.getId()));
                     editTextName.setText(table.getFirst_name());
                     editTextRealname.setText(table.getLast_name());
-//                    ratingBar.setRating(hero.getRating());
+                    ratingBar.setRating(3);
                     spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition("Avengers"));
                     buttonAddUpdate.setText("Update");
                 }
