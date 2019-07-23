@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     private void createHero() {
         String first_name = editTextName.getText().toString().trim();
         String last_name = editTextRealname.getText().toString().trim();
-        String login_token = editTextRealname.getText().toString().trim();
+        String login_token = editTextToken.getText().toString().trim();
 
 
 //        String team = spinnerTeam.getSelectedItem().toString();
@@ -198,9 +198,17 @@ public class MainActivity extends AppCompatActivity {
         request.execute();
 
         buttonAddUpdate.setText("Add");
-
-//        editTextName.setText("");
-//        editTextRealname.setText("");
+        editTextTimeStarted.setVisibility(View.GONE);
+        editTextTimeEnded.setVisibility(View.GONE);
+        editTextTotalTime.setVisibility(View.GONE);
+        editTextIsWorking.setVisibility(View.GONE);
+        editTextName.setText("");
+        editTextRealname.setText("");
+        editTextToken.setText("");
+        editTextTimeStarted.setText("");
+        editTextTimeEnded.setText("");
+        editTextTotalTime.setText("");
+        editTextIsWorking.setText("");
 //        ratingBar.setRating(0);
 //        spinnerTeam.setSelection(0);
 
@@ -349,6 +357,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     isUpdating = true;
+                    editTextTimeStarted.setVisibility(View.VISIBLE);
+                    editTextTimeEnded.setVisibility(View.VISIBLE);
+                    editTextTotalTime.setVisibility(View.VISIBLE);
+                    editTextIsWorking.setVisibility(View.VISIBLE);
                     editTextHeroId.setText(String.valueOf(table.getId()));
                     editTextName.setText(table.getFirst_name());
                     editTextRealname.setText(table.getLast_name());

@@ -49,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Time started at" />
+            android:hint="Time started at"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/editTextTimeEnded"
@@ -57,7 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Time ended at" />
+            android:hint="Time ended at"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/editTextTotalTime"
@@ -65,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Total time worked today" />
+            android:hint="Total time worked today"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/editTextBooleanEnd"
@@ -73,7 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Stopped working ?" />
+            android:hint="Stopped working ?"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/buttonAddUpdate"
