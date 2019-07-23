@@ -131,30 +131,64 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateHero() {
         String id = editTextHeroId.getText().toString();
-        String name = editTextName.getText().toString().trim();
-        String realname = editTextRealname.getText().toString().trim();
+        String first_name = editTextName.getText().toString().trim();
+        String last_name = editTextRealname.getText().toString().trim();
+        String token = editTextToken.getText().toString();
+        String last_time_started = editTextTimeStarted.getText().toString();
+        String last_time_ended = editTextTimeEnded.getText().toString();
+        String todays_worktime = editTextTotalTime.getText().toString();
+        String checkas = editTextIsWorking.getText().toString();
 
 //        int rating = (int) ratingBar.getRating();
 
 //        String team = spinnerTeam.getSelectedItem().toString();
 
 
-        if (TextUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(first_name)) {
             editTextName.setError("Please enter name");
             editTextName.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(realname)) {
+        if (TextUtils.isEmpty(last_name)) {
             editTextRealname.setError("Please enter real name");
             editTextRealname.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(token)) {
+            editTextToken.setError("Please enter a token");
+            editTextToken.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(last_time_started)) {
+            editTextTimeStarted.setError("Please enter a starting date");
+            editTextTimeStarted.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(last_time_ended)) {
+            editTextTimeEnded.setError("Please enter a ending date");
+            editTextTimeEnded.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(todays_worktime)) {
+            editTextTotalTime.setError("Please enter a total worktime");
+            editTextTotalTime.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(checkas)) {
+            editTextIsWorking.setError("Please enter a 0 or a 1");
+            editTextIsWorking.requestFocus();
             return;
         }
 
         HashMap<String, String> params = new HashMap<>();
         params.put("id", id);
-        params.put("name", name);
-        params.put("realname", realname);
+        params.put("first_name", first_name);
+        params.put("token", token);
+        params.put("last_time_started", last_time_started);
+        params.put("last_time_ended", last_time_ended);
+        params.put("todays_worktime", todays_worktime);
+        params.put("checkas", checkas);
 //        params.put("rating", String.valueOf(rating));
 //        params.put("teamaffiliation", team);
 
