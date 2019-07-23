@@ -35,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_POST_REQUEST = 1025;
 
     EditText editTextHeroId, editTextName, editTextRealname;
+    EditText editTextToken,editTextTimeStarted,editTextTimeEnded,editTextTotalTime,editTextIsWorking;
 //    RatingBar ratingBar;
-    Spinner spinnerTeam;
+//    Spinner spinnerTeam;
     ProgressBar progressBar;
     ListView listView;
     Button buttonAddUpdate;
@@ -50,12 +51,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//=================================================================
+        editTextToken = findViewById(R.id.editTextToken);
+        editTextTimeStarted = findViewById(R.id.editTextTimeStarted);
+        editTextTimeEnded = findViewById(R.id.editTextTimeEnded);
+        editTextTotalTime = findViewById(R.id.editTextTotalTime);
+        editTextIsWorking = findViewById(R.id.editTextBooleanEnd);
+//        ==========================================
+
 
         editTextHeroId = (EditText) findViewById(R.id.editTextHeroId);
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextRealname = (EditText) findViewById(R.id.editTextRealname);
 //        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        spinnerTeam = (Spinner) findViewById(R.id.spinnerTeamAffiliation);
+//        spinnerTeam = (Spinner) findViewById(R.id.spinnerTeamAffiliation);
 
         buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
 
@@ -86,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         String login_token = editTextRealname.getText().toString().trim();
 
 
-        String team = spinnerTeam.getSelectedItem().toString();
+//        String team = spinnerTeam.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(first_name)) {
             editTextName.setError("Please enter a name");
@@ -127,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        int rating = (int) ratingBar.getRating();
 
-        String team = spinnerTeam.getSelectedItem().toString();
+//        String team = spinnerTeam.getSelectedItem().toString();
 
 
         if (TextUtils.isEmpty(name)) {
@@ -147,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         params.put("name", name);
         params.put("realname", realname);
 //        params.put("rating", String.valueOf(rating));
-        params.put("teamaffiliation", team);
+//        params.put("teamaffiliation", team);
 
 
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_UPDATE_HERO, params, CODE_POST_REQUEST);
@@ -158,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         editTextName.setText("");
         editTextRealname.setText("");
 //        ratingBar.setRating(0);
-        spinnerTeam.setSelection(0);
+//        spinnerTeam.setSelection(0);
 
         isUpdating = false;
     }
@@ -308,6 +317,11 @@ public class MainActivity extends AppCompatActivity {
                     editTextHeroId.setText(String.valueOf(table.getId()));
                     editTextName.setText(table.getFirst_name());
                     editTextRealname.setText(table.getLast_name());
+                    editTextToken.setText(table.getLogin_token());
+                    editTextTimeStarted.setText(table.getLast_time_started());
+                    editTextTimeEnded.setText(table.getLast_time_ended());
+                    editTextTotalTime.setText(Long.toString(table.getTodays_worktime()));
+                    editTextIsWorking.setText(table.getCheckas());
 //                    ratingBar.setRating(3);
 //                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition("Avengers"));
                     buttonAddUpdate.setText("Update");

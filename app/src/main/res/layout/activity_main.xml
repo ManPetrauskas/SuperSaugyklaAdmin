@@ -25,32 +25,55 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Name" />
+            android:hint="First Name" />
 
         <EditText
-            android:id="@+id/editTextRealname"
+        android:id="@+id/editTextRealname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="Last Name" />
+
+        <EditText
+            android:id="@+id/editTextToken"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Realname" />
+            android:hint="User Token" />
 
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1" />
-
-        <Spinner
-            android:id="@+id/spinnerTeamAffiliation"
+        <EditText
+            android:id="@+id/editTextTimeStarted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:entries="@array/teams" />
+            android:hint="Time started at" />
 
+        <EditText
+            android:id="@+id/editTextTimeEnded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Time ended at" />
+
+        <EditText
+            android:id="@+id/editTextTotalTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Total time worked today" />
+
+        <EditText
+            android:id="@+id/editTextBooleanEnd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="Stopped working ?" />
 
         <Button
             android:id="@+id/buttonAddUpdate"

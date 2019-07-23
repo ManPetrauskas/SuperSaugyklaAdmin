@@ -49,7 +49,7 @@ public class TableGeneral {
         return todays_worktime;
     }
 
-    public int isCheckas() {
+    public int getCheckas() {
         return checkas;
     }
 }
