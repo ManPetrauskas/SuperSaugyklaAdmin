@@ -184,7 +184,8 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> params = new HashMap<>();
         params.put("id", id);
         params.put("first_name", first_name);
-        params.put("token", token);
+        params.put("last_name", last_name);
+        params.put("login_token", token);
         params.put("last_time_started", last_time_started);
         params.put("last_time_ended", last_time_ended);
         params.put("todays_worktime", todays_worktime);
@@ -198,8 +199,8 @@ public class MainActivity extends AppCompatActivity {
 
         buttonAddUpdate.setText("Add");
 
-        editTextName.setText("");
-        editTextRealname.setText("");
+//        editTextName.setText("");
+//        editTextRealname.setText("");
 //        ratingBar.setRating(0);
 //        spinnerTeam.setSelection(0);
 
@@ -355,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
                     editTextTimeStarted.setText(table.getLast_time_started());
                     editTextTimeEnded.setText(table.getLast_time_ended());
                     editTextTotalTime.setText(Long.toString(table.getTodays_worktime()));
-                    editTextIsWorking.setText(table.getCheckas());
+                    editTextIsWorking.setText(Integer.toString(table.getCheckas()));
 //                    ratingBar.setRating(3);
 //                    spinnerTeam.setSelection(((ArrayAdapter<String>) spinnerTeam.getAdapter()).getPosition("Avengers"));
                     buttonAddUpdate.setText("Update");
