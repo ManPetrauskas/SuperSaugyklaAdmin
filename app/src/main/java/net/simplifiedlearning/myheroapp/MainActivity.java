@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_POST_REQUEST = 1025;
 
     EditText editTextHeroId, editTextName, editTextRealname;
-    RatingBar ratingBar;
+//    RatingBar ratingBar;
     Spinner spinnerTeam;
     ProgressBar progressBar;
     ListView listView;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         editTextHeroId = (EditText) findViewById(R.id.editTextHeroId);
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextRealname = (EditText) findViewById(R.id.editTextRealname);
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+//        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         spinnerTeam = (Spinner) findViewById(R.id.spinnerTeamAffiliation);
 
         buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         String name = editTextName.getText().toString().trim();
         String realname = editTextRealname.getText().toString().trim();
 
-        int rating = (int) ratingBar.getRating();
+//        int rating = (int) ratingBar.getRating();
 
         String team = spinnerTeam.getSelectedItem().toString();
 
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         params.put("id", id);
         params.put("name", name);
         params.put("realname", realname);
-        params.put("rating", String.valueOf(rating));
+//        params.put("rating", String.valueOf(rating));
         params.put("teamaffiliation", team);
 
 
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextName.setText("");
         editTextRealname.setText("");
-        ratingBar.setRating(0);
+//        ratingBar.setRating(0);
         spinnerTeam.setSelection(0);
 
         isUpdating = false;
