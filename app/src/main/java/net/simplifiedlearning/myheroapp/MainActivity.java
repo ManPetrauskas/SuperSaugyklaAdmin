@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         PerformNetworkRequest request = new PerformNetworkRequest(Api.URL_CREATE_HERO, params, CODE_POST_REQUEST);
         request.execute();
+        
     }
 
     private void readHeroes() {
