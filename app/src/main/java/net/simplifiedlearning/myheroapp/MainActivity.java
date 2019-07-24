@@ -1,6 +1,7 @@
 package net.simplifiedlearning.myheroapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextToken,editTextTimeStarted,editTextTimeEnded,editTextTotalTime,editTextIsWorking;
 //    RatingBar ratingBar;
 //    Spinner spinnerTeam;
+    public static TableGeneral forDetails;
     ProgressBar progressBar;
     ListView listView;
     Button buttonAddUpdate;
@@ -88,7 +90,11 @@ public class MainActivity extends AppCompatActivity {
         readHeroes();
     }
 
-
+    private  void openDetails(TableGeneral tbl){
+        forDetails = tbl;
+        Intent intent = new Intent(this, details.class);
+        startActivity(intent);
+    }
     private void createHero() {
         String first_name = editTextName.getText().toString().trim();
         String last_name = editTextRealname.getText().toString().trim();
@@ -347,12 +353,20 @@ public class MainActivity extends AppCompatActivity {
 
             TextView textViewName = listViewItem.findViewById(R.id.textViewName);
 
+            TextView textViewDetails = listViewItem.findViewById(R.id.textViewDetails);
             TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
             TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
 
             final TableGeneral table = tableList.get(position);
 
-            textViewName.setText(table.getFirst_name());
+            textViewName.setText(table.getFirst_name()+table.getLast_name());
+
+            textViewDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openDetails(table);
+                }
+            });
 
             textViewUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
