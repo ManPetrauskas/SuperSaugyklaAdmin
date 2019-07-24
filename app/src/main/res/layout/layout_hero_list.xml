@@ -15,6 +15,17 @@
         android:text="Captain America"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/textViewDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewUpdate"
+        android:layout_toLeftOf="@+id/textViewUpdate"
+        android:layout_toStartOf="@+id/textViewUpdate"
+        android:padding="5dp"
+        android:text="Details"
+        android:textColor="#034efc" />
 
     <TextView
         android:textStyle="bold"
