@@ -40,7 +40,7 @@ public class details extends AppCompatActivity {
     }
     private void readHeroes() {
         HashMap<String, String> params = new HashMap<>();
-        params.put("login_token", genaralTbl.getLogin_token());
+        params.put("user_id", Integer.toString(genaralTbl.getId()));
         details.PerformNetworkRequest request = new details.PerformNetworkRequest(Api.URL_GETTABLE_CHANGES_MADE, params, CODE_POST_REQUEST);
         request.execute();
     }
@@ -57,8 +57,8 @@ public class details extends AppCompatActivity {
                     obj.getString("first_name"),
                     obj.getString("last_name"),
                     obj.getString("login_token"),
-                    obj.getString("last_time_started"),
-                    obj.getString("last_time_ended"),
+                    obj.getString("time_started"),
+                    obj.getString("time_ended"),
                     obj.getLong("todays_worktime")
             ));
         }
@@ -141,8 +141,8 @@ public class details extends AppCompatActivity {
 
             final TableChanges table = tableList.get(position);
 
-            textViewId.setText(table.getId());
-            textViewUserId.setText(table.getUser_id());
+            textViewId.setText(Integer.toString(table.getId()));
+            textViewUserId.setText(Integer.toString(table.getUser_id()));
             textViewFirstName.setText(table.getFirst_name());
             textViewLastName.setText(table.getLast_name());
             textViewLoginToken.setText(table.getLogin_token());
