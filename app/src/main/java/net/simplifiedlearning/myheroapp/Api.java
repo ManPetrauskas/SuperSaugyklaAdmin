@@ -12,5 +12,6 @@ public class Api {
     public static final String URL_READ_HEROES = ROOT_URL + "getheroes";        //php veikia
     public static final String URL_UPDATE_HERO = ROOT_URL + "updatehero";       //php veikia
     public static final String URL_DELETE_HERO = ROOT_URL + "deletehero&id=";   //php veikia
+    public static final String URL_GETTABLE_CHANGES_MADE = ROOT_URL + "getherochanges_made";   //php veikia
 
 }
