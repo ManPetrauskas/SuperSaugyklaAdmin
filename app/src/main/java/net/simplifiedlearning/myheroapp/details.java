@@ -24,15 +24,25 @@ import java.util.List;
 import static android.view.View.GONE;
 
 public class details extends AppCompatActivity {
-
+    private static final int CODE_GET_REQUEST = 1024;
+    private static final int CODE_POST_REQUEST = 1025;
     List<TableChanges> tableList;
     ListView listView;
+    TableGeneral genaralTbl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         tableList = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listViewHeroes);
+        genaralTbl = MainActivity.forDetails;
+        readHeroes();
+    }
+    private void readHeroes() {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("login_token", genaralTbl.getLogin_token());
+        details.PerformNetworkRequest request = new details.PerformNetworkRequest(Api.URL_GETTABLE_CHANGES_MADE, params, CODE_POST_REQUEST);
+        request.execute();
     }
     private void refreshHeroList(JSONArray heroes) throws JSONException {
 //        heroList.clear();
