@@ -33,11 +33,13 @@ public class details extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater();
             View listViewItem = inflater.inflate(R.layout.layout_detail_list, null, true);
 
-            TextView textViewName = listViewItem.findViewById(R.id.textViewName);
-
-            TextView textViewDetails = listViewItem.findViewById(R.id.textViewDetails);
-            TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
-            TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
+            TextView textViewId = listViewItem.findViewById(R.id.textViewId);
+            TextView textViewUserId = listViewItem.findViewById(R.id.textViewUserId);
+            TextView textViewFirstName = listViewItem.findViewById(R.id.textViewFirstName);
+//
+//            TextView textViewDetails = listViewItem.findViewById(R.id.textViewDetails);
+//            TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
+//            TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
 
             final TableGeneral table = tableList.get(position);
 
@@ -76,22 +78,22 @@ public class details extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-                    builder.setTitle("Delete " + table.getFirst_name())
-                            .setMessage("Are you sure you want to delete it?")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    deleteHero(table.getLogin_token());
-                                }
-                            })
-                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//
+//                    builder.setTitle("Delete " + table.getFirst_name())
+//                            .setMessage("Are you sure you want to delete it?")
+//                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    deleteHero(table.getLogin_token());
+//                                }
+//                            })
+//                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//
+//                                }
+//                            })
+//                            .setIcon(android.R.drawable.ic_dialog_alert)
+//                            .show();
 
                 }
             });

@@ -359,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
 
             final TableGeneral table = tableList.get(position);
 
-            textViewName.setText(table.getFirst_name()+table.getLast_name());
+            textViewName.setText(table.getFirst_name()+" "+table.getLast_name());
 
             textViewDetails.setOnClickListener(new View.OnClickListener() {
                 @Override
