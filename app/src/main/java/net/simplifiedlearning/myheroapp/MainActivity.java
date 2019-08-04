@@ -43,11 +43,13 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ListView listView;
     Button buttonAddUpdate;
+    Button buttonFind;
 
 //    List<Hero> heroList;
     List<TableGeneral> tableList;
 
     boolean isUpdating = false;
+    boolean maching = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 //        spinnerTeam = (Spinner) findViewById(R.id.spinnerTeamAffiliation);
 
         buttonAddUpdate = (Button) findViewById(R.id.buttonAddUpdate);
+        buttonFind = findViewById(R.id.buttonFind);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         listView = (ListView) findViewById(R.id.listViewHeroes);
@@ -87,6 +90,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        buttonFind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isUpdating) {
+                    maching = true;
+                    readHeroes();
+                }
+            }
+        });
+
         readHeroes();
     }
 
@@ -232,21 +245,32 @@ public class MainActivity extends AppCompatActivity {
     private void refreshHeroList(JSONArray heroes) throws JSONException {
 //        heroList.clear();
         tableList.clear();
-
+        String firstNm=editTextName.getText().toString();
+        String lastNm=editTextRealname.getText().toString();
         for (int i = 0; i < heroes.length(); i++) {
             JSONObject obj = heroes.getJSONObject(i);
-
-            tableList.add(new TableGeneral(
-                    obj.getInt("id"),
-                    obj.getString("first_name"),
-                    obj.getString("last_name"),
-                    obj.getString("login_token"),
-                    obj.getString("last_time_started"),
-                    obj.getString("last_time_ended"),
-                    obj.getLong("todays_worktime"),
-                    obj.getInt("checkas")
-            ));
+            int id=obj.getInt("id");
+            String firstN=obj.getString("first_name");
+            String lastN=obj.getString("last_name");
+            String tokenL=obj.getString("login_token");
+            String startT=obj.getString("last_time_started");
+            String endT=obj.getString("last_time_ended");
+            Long totalT=obj.getLong("todays_worktime");
+            int chkT=obj.getInt("checkas");
+            if(firstN.startsWith(firstNm)|| lastN.startsWith(lastNm)||!maching){
+                tableList.add(new TableGeneral(
+                        id,
+                        firstN,
+                        lastN,
+                        tokenL,
+                        startT,
+                        endT,
+                        totalT,
+                        chkT
+                ));
+            }
         }
+        maching = false;
 
         HeroAdapter adapter = new HeroAdapter(tableList);
         listView.setAdapter(adapter);
