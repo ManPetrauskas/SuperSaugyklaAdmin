@@ -93,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
         buttonFind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isUpdating) {
-                    maching = true;
-                    readHeroes();
-                }
+                maching = true;
+                readHeroes();
+
             }
         });
 
