@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
             String endT=obj.getString("last_time_ended");
             Long totalT=obj.getLong("todays_worktime");
             int chkT=obj.getInt("checkas");
-            if(firstN.startsWith(firstNm)|| lastN.startsWith(lastNm)||!maching){
+            if(firstN.startsWith(firstNm) && lastN.startsWith(lastNm)||!maching){
                 tableList.add(new TableGeneral(
                         id,
                         firstN,
